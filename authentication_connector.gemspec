@@ -8,4 +8,9 @@ Gem::Specification.new do |s|
   s.authors     = ['Hagen Mahnke']
   s.email       = 'hagenmahnke@googlemail.com'
   s.files       = ['lib/authentication_connector.rb']
+
+  s.add_development_dependency 'bundler', '~> 1.11'
+  s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'pry', '~> 0.10'
+  s.add_development_dependency 'rubocop', '~> 0.39'
 end
