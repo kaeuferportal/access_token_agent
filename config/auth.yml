@@ -1,0 +1,12 @@
+production:
+  host: auth.kaeuferportal.de
+  protocol: https
+
+development:
+  host: localhost:8012
+  protocol: http
+
+test:
+  host: localhost:8012
+  protocol: http
+
