@@ -11,7 +11,7 @@ module AccessTokenAgent
       client_id == other.client_id && client_secret == other.client_secret
     end
 
-    alias_method :eql?, :==
+    alias eql? ==
 
     def hash
       client_id.hash + client_secret.hash

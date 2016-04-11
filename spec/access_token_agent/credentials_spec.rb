@@ -10,7 +10,7 @@ module AccessTokenAgent
 
         it 'they are not equal' do
           expect(credentials == other_credentials).to be false
-          expect(credentials.eql? other_credentials).to be false
+          expect(credentials.eql?(other_credentials)).to be false
         end
       end
 
@@ -19,7 +19,7 @@ module AccessTokenAgent
 
         it 'they are not equal' do
           expect(credentials == other_credentials).to be false
-          expect(credentials.eql? other_credentials).to be false
+          expect(credentials.eql?(other_credentials)).to be false
         end
       end
 
@@ -28,7 +28,7 @@ module AccessTokenAgent
 
         it 'they are equal' do
           expect(credentials == other_credentials).to be true
-          expect(credentials.eql? other_credentials).to be true
+          expect(credentials.eql?(other_credentials)).to be true
         end
 
         it 'they have the same hash' do

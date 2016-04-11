@@ -6,13 +6,13 @@ module AccessTokenAgent
       subject { described_class.authenticate(credentials) }
       let(:credentials) do
         Credentials.new('test_app',
-                        'e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec46115' \
-                        '7a94675f95')
+                        'e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461' \
+                        '157a94675f95')
       end
 
       context 'when an access_token is known for the credentials' do
         let(:known_token) do
-          Token.new('expires_in' => 7200, 'token_type' => 'bearer'  )
+          Token.new('expires_in' => 7200, 'token_type' => 'bearer')
         end
         before { described_class.add(credentials, known_token) }
 

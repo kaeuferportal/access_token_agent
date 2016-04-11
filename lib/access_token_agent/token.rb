@@ -4,7 +4,7 @@ module AccessTokenAgent
   class Token
     attr_reader :value, :expires_at
 
-    EXPIRY_MARGIN = 60  # seconds
+    EXPIRY_MARGIN = 60 # seconds
 
     def initialize(auth_response)
       unless auth_response['token_type'] == 'bearer'
