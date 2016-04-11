@@ -29,9 +29,7 @@ module AccessTokenAgent
           end
         end
 
-        context 'and it is invalid' do
-          use_vcr_cassette
-
+        context 'and it is invalid', :vcr do
           before { allow(known_token).to receive(:valid?).and_return(false) }
 
           it 'does not return the known token' do
@@ -49,9 +47,7 @@ module AccessTokenAgent
         end
       end
 
-      context 'when no access_token is known for the credentials' do
-        use_vcr_cassette
-
+      context 'when no access_token is known for the credentials', :vcr do
         it 'returns a token' do
           expect(subject).to be_kind_of Token
         end

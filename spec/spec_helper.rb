@@ -8,13 +8,13 @@ require 'vcr'
 
 RSpec.configure do |config|
   config.mock_with(:rspec) { |mocks| mocks.verify_partial_doubles = true }
-  config.extend VCR::RSpec::Macros
   config.before :each do
     AccessTokenAgent.clear
   end
 end
 
 VCR.configure do |config|
+  config.configure_rspec_metadata!
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
 end
