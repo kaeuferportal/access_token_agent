@@ -65,18 +65,18 @@ module AccessTokenAgent
       end
     end
 
-    describe '.token_from_auth', :vcr do
-      subject { described_class.token_from_auth(credentials) }
+    describe '.from_auth', :vcr do
+      subject { described_class.from_auth(credentials) }
 
       context 'when credentials are valid' do
         it 'returns a Hash containing the access_token' do
           expect(subject['access_token']).to eq(
-            '0e894e06fd467e19bd28b797c61cbb4c5ce238c43d372e015ea2b64b7bccf230'
+            'f265cf6640f2cbf3e52def5ce0ef12a54e8ff9eba475bcf6f79a0fa3b70d748d'
           )
         end
 
         it 'returns a Hash containing expires_in' do
-          expect(subject['expires_in']).to eq 7197
+          expect(subject['expires_in']).to eq 7200
         end
       end
 

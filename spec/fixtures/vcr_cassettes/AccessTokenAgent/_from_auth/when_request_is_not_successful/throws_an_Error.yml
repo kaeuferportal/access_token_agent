@@ -19,8 +19,8 @@ http_interactions:
       - application/x-www-form-urlencoded
   response:
     status:
-      code: 200
-      message: 'OK '
+      code: 500
+      message: 'Internal Server Error '
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -35,22 +35,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"cbf2ed4a8b8d5ed401bbeee9aff0e159"
+      - W/"8cec70b04cd2a35080ffdd456e0547eb"
       X-Request-Id:
-      - 83f2cdbc-3374-4e08-9a81-4e01632e4007
+      - 371a757d-d295-4eaf-ae31-d08a6f257f7c
       X-Runtime:
-      - '0.529060'
+      - '0.013989'
       Server:
       - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
       Date:
-      - Mon, 11 Apr 2016 15:25:22 GMT
+      - Mon, 11 Apr 2016 15:43:57 GMT
       Content-Length:
       - '147'
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"access_token":"0e894e06fd467e19bd28b797c61cbb4c5ce238c43d372e015ea2b64b7bccf230","token_type":"bearer","expires_in":7200,"created_at":1460388321}'
-    http_version: 
-  recorded_at: Mon, 11 Apr 2016 15:25:22 GMT
+      string: '{"access_token":"126177c0836dd44fe9d2321915dc59afeeca4d2c53550df4356d5086ddc6a013","token_type":"bearer","expires_in":7200,"created_at":1460389437}'
+    http_version:
+  recorded_at: Mon, 11 Apr 2016 15:43:57 GMT
 recorded_with: VCR 3.0.1

@@ -26,12 +26,12 @@ module AccessTokenAgent
   end
 
   def self.get_token(credentials)
-    token = Token.new(token_from_auth(credentials))
+    token = Token.new(from_auth(credentials))
     add(credentials, token)
     token
   end
 
-  def self.token_from_auth(credentials)
+  def self.from_auth(credentials)
     response = request(credentials)
     case response.code
     when '200'
