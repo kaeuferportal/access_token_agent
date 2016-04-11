@@ -11,7 +11,9 @@ module AccessTokenAgent
       end
 
       context 'when an access_token is known for the credentials' do
-        let(:known_token) { Token.new('expires_in' => 7200  ) }
+        let(:known_token) do
+          Token.new('expires_in' => 7200, 'token_type' => 'bearer'  )
+        end
         before { described_class.add(credentials, known_token) }
 
         context 'and it is valid' do
