@@ -1,6 +1,7 @@
 require 'net/http'
 require 'yaml'
 require 'access_token_agent/error'
+require 'access_token_agent/unauthorized_error'
 require 'access_token_agent/token'
 require 'access_token_agent/credentials'
 
@@ -35,11 +36,18 @@ module AccessTokenAgent
     request.basic_auth credentials.client_id, credentials.client_secret
     request.form_data = { 'grant_type' => 'client_credentials' }
 
-    # TODO: deal with unsuccessful requests
     result = Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
       http.request(request)
     end
-    JSON.parse(result.body)
+
+    case result.code
+    when '200'
+      JSON.parse(result.body)
+    when '401'
+      raise UnauthorizedError
+    else
+      raise Error
+    end
   end
 
   def self.auth_uri

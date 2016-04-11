@@ -2,6 +2,12 @@ require 'spec_helper'
 
 module AccessTokenAgent
   describe AccessTokenAgent do
+    let(:credentials) do
+      Credentials.new('test_app',
+                      'e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461' \
+                      '157a94675f95')
+    end
+
     describe '.authenticate' do
       subject { described_class.authenticate(credentials) }
       let(:credentials) do
@@ -59,14 +65,32 @@ module AccessTokenAgent
       end
     end
 
-    describe '.token_from_auth' do
+    describe '.token_from_auth', :vcr do
+      subject { described_class.token_from_auth(credentials) }
+
       context 'when credentials are valid' do
-        it 'returns an access_token' do
+        it 'returns a Hash containing the access_token' do
+          expect(subject['access_token']).to eq(
+            '0e894e06fd467e19bd28b797c61cbb4c5ce238c43d372e015ea2b64b7bccf230'
+          )
+        end
+
+        it 'returns a Hash containing expires_in' do
+          expect(subject['expires_in']).to eq 7197
         end
       end
 
       context 'when credentials are invalid' do
-        it 'throws an error' do
+        let(:credentials) { Credentials.new('test_app', '157a94675f95') }
+
+        it 'throws an UnauthorizedError' do
+          expect { subject }.to raise_error UnauthorizedError
+        end
+      end
+
+      context 'when request is not successful' do
+        it 'throws an Error' do
+          expect { subject }.to raise_error Error
         end
       end
     end

@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://test_app:e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461157a94675f95@localhost:8012/oauth/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:8012
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 500
+      message: 'Internal Server Error '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b1339f60edc0ec4a8840059a6db2cc59"
+      X-Request-Id:
+      - 4333de6e-e4eb-4f4f-82bd-38309cc329a9
+      X-Runtime:
+      - '0.861204'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
+      Date:
+      - Mon, 11 Apr 2016 15:34:25 GMT
+      Content-Length:
+      - '147'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"5a7b60f4687a78e08073b9b47e3e9c18b400bee766dbce9dea7e1e5491768b5e","token_type":"bearer","expires_in":7199,"created_at":1460388864}'
+    http_version:
+  recorded_at: Mon, 11 Apr 2016 15:34:25 GMT
+recorded_with: VCR 3.0.1
