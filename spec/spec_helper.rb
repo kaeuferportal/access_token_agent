@@ -9,6 +9,9 @@ require 'vcr'
 RSpec.configure do |config|
   config.mock_with(:rspec) { |mocks| mocks.verify_partial_doubles = true }
   config.extend VCR::RSpec::Macros
+  config.before :each do
+    AccessTokenAgent.clear
+  end
 end
 
 
