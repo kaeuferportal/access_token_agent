@@ -32,21 +32,24 @@ module AccessTokenAgent
   end
 
   def self.token_from_auth(credentials)
-    request = Net::HTTP::Post.new(auth_uri)
-    request.basic_auth credentials.client_id, credentials.client_secret
-    request.form_data = { 'grant_type' => 'client_credentials' }
-
-    result = Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
-      http.request(request)
-    end
-
-    case result.code
+    response = request(credentials)
+    case response.code
     when '200'
-      JSON.parse(result.body)
+      JSON.parse(response.body)
     when '401'
       raise UnauthorizedError
     else
       raise Error
+    end
+  end
+
+  def self.request(credentials)
+    request = Net::HTTP::Post.new(auth_uri)
+    request.basic_auth credentials.client_id, credentials.client_secret
+    request.form_data = { 'grant_type' => 'client_credentials' }
+
+    Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
+      http.request(request)
     end
   end
 
