@@ -1,5 +1,6 @@
 require 'net/http'
 require 'yaml'
+require 'authentication_connector/error'
 require 'authentication_connector/token'
 require 'authentication_connector/credentials'
 
