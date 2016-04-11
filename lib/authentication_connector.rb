@@ -26,16 +26,15 @@ module AuthenticationConnector
   end
 
   def self.token_from_auth(credentials)
-    # TODO: Stub calls to auth in a non-intrusive way when testing
-    return 'FakeFakeFake' if env == 'test'
 
     request = Net::HTTP::Post.new(auth_uri, grant_type: 'client_credentials')
     request.basic_auth credentials.client_id, credentials.client_secret
 
-    # TODO: Get access_token from the result or deal with unsuccessful requests
-    _result = Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
+    # TODO: deal with unsuccessful requests
+    result = Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
       http.request(request)
     end
+    JSON.parse(result.body)
   end
 
   def self.auth_uri
