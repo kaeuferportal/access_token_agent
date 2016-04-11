@@ -26,9 +26,9 @@ module AuthenticationConnector
   end
 
   def self.token_from_auth(credentials)
-
-    request = Net::HTTP::Post.new(auth_uri, grant_type: 'client_credentials')
+    request = Net::HTTP::Post.new(auth_uri)
     request.basic_auth credentials.client_id, credentials.client_secret
+    request.form_data = { 'grant_type' => 'client_credentials' }
 
     # TODO: deal with unsuccessful requests
     result = Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
