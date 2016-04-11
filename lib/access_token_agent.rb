@@ -1,10 +1,10 @@
 require 'net/http'
 require 'yaml'
-require 'authentication_connector/error'
-require 'authentication_connector/token'
-require 'authentication_connector/credentials'
+require 'access_token_agent/error'
+require 'access_token_agent/token'
+require 'access_token_agent/credentials'
 
-module AuthenticationConnector
+module AccessTokenAgent
   @known_tokens = {}
 
   def self.authenticate(credentials)
@@ -18,6 +18,10 @@ module AuthenticationConnector
 
   def self.add(credentials, token)
     @known_tokens[credentials] = token
+  end
+
+  def self.clear
+    @known_tokens = {}
   end
 
   def self.get_token(credentials)

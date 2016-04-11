@@ -1,6 +1,6 @@
-require 'authentication_connector/invalid_token_type_error'
+require 'access_token_agent/invalid_token_type_error'
 
-module AuthenticationConnector
+module AccessTokenAgent
   class Token
     attr_reader :value, :expires_at
 

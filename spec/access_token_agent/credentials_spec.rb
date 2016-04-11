@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module AuthenticationConnector
+module AccessTokenAgent
   describe Credentials do
     let(:credentials) { Credentials.new('1', 'test123') }
 

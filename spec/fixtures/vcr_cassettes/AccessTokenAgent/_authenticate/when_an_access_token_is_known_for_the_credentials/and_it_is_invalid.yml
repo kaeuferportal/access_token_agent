@@ -35,22 +35,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"91259df6d9ca24ee027e2ead6bd323b2"
+      - W/"70d128eb1da7c7b88c17ea610ed671b5"
       X-Request-Id:
-      - a71bab40-ac75-4412-8ea6-6fd7d79a8daf
+      - 4299deaf-f985-48be-aad8-e05144ac1332
       X-Runtime:
-      - '0.016887'
+      - '0.014161'
       Server:
       - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
       Date:
-      - Mon, 11 Apr 2016 11:50:07 GMT
+      - Mon, 11 Apr 2016 14:04:36 GMT
       Content-Length:
       - '147'
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"access_token":"bfe8e69d37b71704e52024351ccf5afef010282ca29035de5806ffe5ea16c2c7","token_type":"bearer","expires_in":7200,"created_at":1460375407}'
+      string: '{"access_token":"45b185137596a4c3fc131238fdb0ff045298e5af39f389442b12964e23d70a9f","token_type":"bearer","expires_in":7200,"created_at":1460383476}'
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 11:50:07 GMT
+  recorded_at: Mon, 11 Apr 2016 14:04:36 GMT
 recorded_with: VCR 3.0.1

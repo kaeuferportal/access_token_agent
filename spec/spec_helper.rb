@@ -2,7 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'authentication_connector'
+require 'access_token_agent'
 require 'webmock/rspec'
 require 'vcr'
 

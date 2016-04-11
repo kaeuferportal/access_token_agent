@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module AuthenticationConnector
+module AccessTokenAgent
   describe Token do
     subject { Token.new(auth_response) }
     let(:auth_response) { { 'token_type' => 'bearer', 'expires_in' => 3600 } }

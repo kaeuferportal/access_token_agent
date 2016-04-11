@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-module AuthenticationConnector
-  describe AuthenticationConnector do
+module AccessTokenAgent
+  describe AccessTokenAgent do
     describe '.authenticate' do
       subject { described_class.authenticate(credentials) }
       let(:credentials) do

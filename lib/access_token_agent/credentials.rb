@@ -1,4 +1,4 @@
-module AuthenticationConnector
+module AccessTokenAgent
   class Credentials
     attr_reader :client_id, :client_secret
 

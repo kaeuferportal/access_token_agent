@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    authentication_connector (0.0.1)
+    access_token_agent (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -55,7 +55,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authentication_connector!
+  access_token_agent!
   bundler (~> 1.11)
   pry (~> 0.10)
   rspec (~> 3.4)

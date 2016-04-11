@@ -8,7 +8,7 @@ credentials.
 Add this line to your application's Gemfile:
 
 ```ruby
-codevault 'authentication_connector', 'kaeuferportal/authentication_connector'
+codevault 'access_token_agent', 'kaeuferportal/access_token_agent'
 ```
 
 And then execute:
