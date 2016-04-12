@@ -7,11 +7,6 @@ before_script:
   - mkdir -p /root/.ssh && ssh-keyscan -H codevault.io > /root/.ssh/known_hosts 2>/dev/null
   - bundle config jobs 8
   - bundle install --path=/tmp/bundler --quiet
-  - echo "de_DE UTF-8" > /etc/locale.gen
-  - locale-gen de_DE.UTF-8
-  - export LANG=de_DE.UTF-8
-  - export LANGUAGE=de_DE:de
-  - export LC_ALL=de_DE.UTF-8
 
 rspec:
   script:
