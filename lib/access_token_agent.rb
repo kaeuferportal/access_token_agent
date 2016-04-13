@@ -11,9 +11,9 @@ module AccessTokenAgent
   def self.authenticate(credentials)
     known_token = @known_tokens[credentials]
     if known_token && known_token.valid?
-      known_token
+      known_token.value
     else
-      get_token(credentials)
+      get_token(credentials).value
     end
   end
 
