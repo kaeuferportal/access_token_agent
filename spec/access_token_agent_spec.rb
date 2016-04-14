@@ -18,7 +18,7 @@ module AccessTokenAgent
 
       context 'when an access_token is known for the credentials' do
         let(:known_token) do
-          Token.new('expires_in' => 7200, 'token_type' => 'bearer')
+          Token.new('expires_in' => 7200, 'token_type' => 'bearer', value: 'xy')
         end
         before { described_class.add(credentials, known_token) }
 
@@ -26,7 +26,7 @@ module AccessTokenAgent
           before { allow(known_token).to receive(:valid?).and_return(true) }
 
           it 'returns the known access_token' do
-            expect(subject).to eq known_token
+            expect(subject).to eq known_token.value
           end
 
           it 'does not call auth project' do
@@ -38,12 +38,13 @@ module AccessTokenAgent
         context 'and it is invalid', :vcr do
           before { allow(known_token).to receive(:valid?).and_return(false) }
 
-          it 'does not return the known token' do
-            expect(subject).not_to eq known_token
+          it 'does not return the known token value' do
+            expect(subject).not_to eq known_token.value
           end
 
-          it 'returns a new token' do
-            expect(subject).to be_kind_of Token
+          it 'returns a new token value' do
+            expect(subject).to eq '3f843afd2c23979989fc4ddf29e5b59a3b773978d' \
+                                  '9f0824fd63f913aeedf6d67'
           end
 
           it 'calls auth project' do
@@ -54,8 +55,9 @@ module AccessTokenAgent
       end
 
       context 'when no access_token is known for the credentials', :vcr do
-        it 'returns a token' do
-          expect(subject).to be_kind_of Token
+        it 'returns a new token value' do
+          expect(subject).to eq '78708e45a2d37ff8aa6799103cff24c20b702c862da' \
+                                'fa2ffa6d1f9f392b44d0c'
         end
 
         it 'calls auth project' do
