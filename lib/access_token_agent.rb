@@ -54,12 +54,15 @@ module AccessTokenAgent
   end
 
   def self.auth_uri
-    @base_uri ||=
-      URI("#{auth_config['protocol']}://#{auth_config['host']}/oauth/token")
+    @base_uri ||= URI("#{auth_config['base_uri']}/oauth/token")
+  end
+
+  def self.configure(options)
+    @auth_config ||= options
   end
 
   def self.auth_config
-    @auth_config ||= YAML.load_file('config/auth.yml')[env]
+    @auth_config
   end
 
   def self.env
