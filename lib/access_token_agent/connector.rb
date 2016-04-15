@@ -2,8 +2,6 @@ require 'net/http'
 
 module AccessTokenAgent
   class Connector
-    @known_token = nil
-
     def initialize(options)
       configure options
     end
@@ -13,16 +11,8 @@ module AccessTokenAgent
       @known_token.value
     end
 
-    def add(token)
-      @known_token = token
-    end
-
-    def clear
-      @known_token = nil
-    end
-
     def fetch_token
-      add(Token.new(from_auth))
+      @known_token = Token.new(from_auth)
     end
 
     def from_auth

@@ -18,7 +18,7 @@ module AccessTokenAgent
           Token.new('expires_in' => 7200, 'token_type' => 'bearer', value: 'xy')
         end
 
-        before { agent.add(known_token) }
+        before { agent.instance_variable_set(:@known_token, known_token) }
 
         context 'and it is valid' do
           before { allow(known_token).to receive(:valid?).and_return(true) }
