@@ -1,16 +1,24 @@
 require 'spec_helper'
 
 module AccessTokenAgent
-  describe AccessTokenAgent do
+  describe Connector do
+    let(:options) do
+      { 'base_uri' => 'http://localhost:8012',
+        'client_id' => 'test_app',
+        'client_secret' =>  '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
+                            'e2a858574dff3a949' }
+    end
+    let(:agent) { Connector.new(options) }
+
     describe '.authenticate' do
-      subject { described_class.authenticate }
+      subject { agent.authenticate }
 
       context 'when an access_token is known for the credentials' do
         let(:known_token) do
           Token.new('expires_in' => 7200, 'token_type' => 'bearer', value: 'xy')
         end
 
-        before { described_class.add(known_token) }
+        before { agent.add(known_token) }
 
         context 'and it is valid' do
           before { allow(known_token).to receive(:valid?).and_return(true) }
@@ -33,8 +41,8 @@ module AccessTokenAgent
           end
 
           it 'returns a new token value' do
-            expect(subject).to eq 'ea142e8925c9dcb7ed130b62ce4c26e171f92096' \
-                                  '501cb5251745917efd891f46'
+            expect(subject).to eq 'fa9724f775c8949bb2d680c7cf11f4d40b92879f1' \
+                                  '6987c0929a78e7a3ce893f4'
           end
 
           it 'calls auth project' do
@@ -46,8 +54,8 @@ module AccessTokenAgent
 
       context 'when no access_token is known for the credentials', :vcr do
         it 'returns a new token value' do
-          expect(subject).to eq '31e49e8344c1886e8324ddb08ccbade9fc0b090155' \
-                                '3dfd9c78c59aa98beab80d'
+          expect(subject).to eq 'b9143de417609e7302bd84fa13034c7557c1eb69a7a' \
+                                'ad7362b033c3b4002a858'
         end
 
         it 'calls auth project' do
@@ -58,12 +66,12 @@ module AccessTokenAgent
     end
 
     describe '.from_auth', :vcr do
-      subject { described_class.from_auth }
+      subject { agent.from_auth }
 
       context 'when credentials are valid' do
         it 'returns a Hash containing the access_token' do
           expect(subject['access_token']).to eq(
-            'c5545520092b5aa49233cbccb423020027e23a9a42464efb0611016ef04c7bb8'
+            'eeb81b0efe8d0792e8e41cd9eab6df75d68f48bbd7b600f332d9bd154981ec51'
           )
         end
 
@@ -73,7 +81,11 @@ module AccessTokenAgent
       end
 
       context 'when credentials are invalid' do
-        before { described_class.configure('client_secret' => '157a94675f95') }
+        let(:options) do
+          { 'base_uri' => 'http://localhost:8012',
+            'client_id' => 'test_app',
+            'client_secret' => '157a94675f95' }
+        end
 
         it 'throws an UnauthorizedError' do
           expect { subject }.to raise_error UnauthorizedError

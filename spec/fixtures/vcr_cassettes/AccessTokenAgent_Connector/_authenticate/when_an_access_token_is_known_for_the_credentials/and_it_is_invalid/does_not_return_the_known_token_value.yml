@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://test_app:157a94675f95@localhost:8012/oauth/token
+    uri: http://test_app:303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2e2a858574dff3a949@localhost:8012/oauth/token
     body:
       encoding: US-ASCII
       string: grant_type=client_credentials
@@ -19,8 +19,8 @@ http_interactions:
       - application/x-www-form-urlencoded
   response:
     status:
-      code: 401
-      message: 'Unauthorized '
+      code: 200
+      message: 'OK '
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -34,27 +34,23 @@ http_interactions:
       - no-cache
       Content-Type:
       - application/json; charset=utf-8
-      Www-Authenticate:
-      - Bearer realm="Doorkeeper", error="invalid_client", error_description="Client
-        authentication failed due to unknown client, no client authentication included,
-        or unsupported authentication method."
+      Etag:
+      - W/"9bfae4f99dd5d0d069fd086092493534"
       X-Request-Id:
-      - fe04dcec-f1f7-490c-9290-75e31aa7e44c
+      - 2a9a46fa-85d2-4444-8c7f-b80d2bd4f079
       X-Runtime:
-      - '0.009619'
+      - '0.018201'
       Server:
       - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
       Date:
-      - Fri, 15 Apr 2016 07:46:47 GMT
+      - Fri, 15 Apr 2016 08:29:50 GMT
       Content-Length:
-      - '173'
+      - '147'
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"error":"invalid_client","error_description":"Client authentication
-        failed due to unknown client, no client authentication included, or unsupported
-        authentication method."}'
+      string: '{"access_token":"83f08f41879acbaf7ced58ae82db7c194139debb77ef937737d96a0c48dfb2ca","token_type":"bearer","expires_in":7200,"created_at":1460708990}'
     http_version: 
-  recorded_at: Fri, 15 Apr 2016 07:46:47 GMT
+  recorded_at: Fri, 15 Apr 2016 08:29:50 GMT
 recorded_with: VCR 3.0.1
