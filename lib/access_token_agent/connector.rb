@@ -47,24 +47,22 @@ module AccessTokenAgent
       end
     end
 
-    def auth_uri
-      @base_uri ||= URI("#{auth_config['base_uri']}/oauth/token")
-    end
-
     def configure(options)
-      @auth_config = auth_config.merge(options)
+      @auth_config = options.select do |key, _value|
+        [:base_uri, :client_id, :client_secret].include? key
+      end
     end
 
-    def auth_config
-      @auth_config || {}
+    def auth_uri
+      @base_uri ||= URI("#{@auth_config[:base_uri]}/oauth/token")
     end
 
     def client_id
-      @auth_config['client_id']
+      @auth_config[:client_id]
     end
 
     def client_secret
-      @auth_config['client_secret']
+      @auth_config[:client_secret]
     end
 
     def env
