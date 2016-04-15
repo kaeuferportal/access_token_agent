@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://test_app:e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461157a94675f95@localhost:8012/oauth/token
+    uri: http://test_app:303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2e2a858574dff3a949@localhost:8012/oauth/token
     body:
       encoding: US-ASCII
       string: grant_type=client_credentials
@@ -35,22 +35,75 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0e4dc475980a6ccc9de11d500cb914ff"
+      - W/"5aa426368f72bea8930a49f8b293271e"
       X-Request-Id:
-      - f7b79f65-5815-4c29-bc61-917dc8863aa3
+      - 846fcba4-ec52-4831-aa17-74a75f3ff01d
       X-Runtime:
-      - '0.014064'
+      - '0.016266'
       Server:
       - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
       Date:
-      - Mon, 11 Apr 2016 14:26:32 GMT
+      - Fri, 15 Apr 2016 07:22:24 GMT
       Content-Length:
       - '147'
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"access_token":"5ab6ea5cfab4aed216e0a72779565a0bf1cd9a8e3baadfc634a6b11984ebb38a","token_type":"bearer","expires_in":7200,"created_at":1460384792}'
+      string: '{"access_token":"323d34f446358e0b5463aecb71ec0f4151cff200fd6193f9b68e40db5955dbc8","token_type":"bearer","expires_in":7200,"created_at":1460704944}'
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 14:26:32 GMT
+  recorded_at: Fri, 15 Apr 2016 07:22:24 GMT
+- request:
+    method: post
+    uri: http://test_app:303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2e2a858574dff3a949@localhost:8012/oauth/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:8012
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"703e6e9a51a3cc93c2be312d20da2db8"
+      X-Request-Id:
+      - d5b9d4be-fb3e-4a2a-9488-038577aa5518
+      X-Runtime:
+      - '0.028765'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.2/2015-04-13)
+      Date:
+      - Fri, 15 Apr 2016 07:22:24 GMT
+      Content-Length:
+      - '147'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"aaa14a46d6b19af91bb0dc5521b8da792651ee2175f08cd90f654f0dddc27d6d","token_type":"bearer","expires_in":7200,"created_at":1460704944}'
+    http_version: 
+  recorded_at: Fri, 15 Apr 2016 07:22:24 GMT
 recorded_with: VCR 3.0.1

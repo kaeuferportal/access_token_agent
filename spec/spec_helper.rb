@@ -11,6 +11,14 @@ RSpec.configure do |config|
   config.before :each do
     AccessTokenAgent.clear
   end
+
+  config.before do
+    AccessTokenAgent.configure(
+      'base_uri' => 'http://localhost:8012',
+      'client_id' => 'test_app',
+      'client_secret' =>  '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2e2' \
+                          'a858574dff3a949')
+  end
 end
 
 VCR.configure do |config|
@@ -18,5 +26,3 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
 end
-
-AccessTokenAgent.configure('base_uri' => 'http://localhost:8012')

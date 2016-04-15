@@ -2,25 +2,15 @@ require 'spec_helper'
 
 module AccessTokenAgent
   describe AccessTokenAgent do
-    let(:credentials) do
-      Credentials.new('test_app',
-                      'e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461' \
-                      '157a94675f95')
-    end
-
     describe '.authenticate' do
-      subject { described_class.authenticate(credentials) }
-      let(:credentials) do
-        Credentials.new('test_app',
-                        'e89653dea946cb2618575cc97e7e165c3d4ad20524d43f4ec461' \
-                        '157a94675f95')
-      end
+      subject { described_class.authenticate }
 
       context 'when an access_token is known for the credentials' do
         let(:known_token) do
           Token.new('expires_in' => 7200, 'token_type' => 'bearer', value: 'xy')
         end
-        before { described_class.add(credentials, known_token) }
+
+        before { described_class.add(known_token) }
 
         context 'and it is valid' do
           before { allow(known_token).to receive(:valid?).and_return(true) }
@@ -43,8 +33,8 @@ module AccessTokenAgent
           end
 
           it 'returns a new token value' do
-            expect(subject).to eq '3f843afd2c23979989fc4ddf29e5b59a3b773978d' \
-                                  '9f0824fd63f913aeedf6d67'
+            expect(subject).to eq 'ea142e8925c9dcb7ed130b62ce4c26e171f92096' \
+                                  '501cb5251745917efd891f46'
           end
 
           it 'calls auth project' do
@@ -56,8 +46,8 @@ module AccessTokenAgent
 
       context 'when no access_token is known for the credentials', :vcr do
         it 'returns a new token value' do
-          expect(subject).to eq '78708e45a2d37ff8aa6799103cff24c20b702c862da' \
-                                'fa2ffa6d1f9f392b44d0c'
+          expect(subject).to eq '31e49e8344c1886e8324ddb08ccbade9fc0b090155' \
+                                '3dfd9c78c59aa98beab80d'
         end
 
         it 'calls auth project' do
@@ -68,12 +58,12 @@ module AccessTokenAgent
     end
 
     describe '.from_auth', :vcr do
-      subject { described_class.from_auth(credentials) }
+      subject { described_class.from_auth }
 
       context 'when credentials are valid' do
         it 'returns a Hash containing the access_token' do
           expect(subject['access_token']).to eq(
-            'f265cf6640f2cbf3e52def5ce0ef12a54e8ff9eba475bcf6f79a0fa3b70d748d'
+            'c5545520092b5aa49233cbccb423020027e23a9a42464efb0611016ef04c7bb8'
           )
         end
 
@@ -83,7 +73,7 @@ module AccessTokenAgent
       end
 
       context 'when credentials are invalid' do
-        let(:credentials) { Credentials.new('test_app', '157a94675f95') }
+        before { described_class.configure('client_secret' => '157a94675f95') }
 
         it 'throws an UnauthorizedError' do
           expect { subject }.to raise_error UnauthorizedError

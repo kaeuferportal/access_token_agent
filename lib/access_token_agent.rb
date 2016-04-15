@@ -6,33 +6,27 @@ require 'access_token_agent/token'
 require 'access_token_agent/credentials'
 
 module AccessTokenAgent
-  @known_tokens = {}
+  @known_token = nil
 
-  def self.authenticate(credentials)
-    known_token = @known_tokens[credentials]
-    if known_token && known_token.valid?
-      known_token.value
-    else
-      get_token(credentials).value
-    end
+  def self.authenticate
+    fetch_token unless @known_token && @known_token.valid?
+    @known_token.value
   end
 
-  def self.add(credentials, token)
-    @known_tokens[credentials] = token
+  def self.add(token)
+    @known_token = token
   end
 
   def self.clear
-    @known_tokens = {}
+    @known_token = nil
   end
 
-  def self.get_token(credentials)
-    token = Token.new(from_auth(credentials))
-    add(credentials, token)
-    token
+  def self.fetch_token
+    add(Token.new(from_auth))
   end
 
-  def self.from_auth(credentials)
-    response = request(credentials)
+  def self.from_auth
+    response = request
     case response.code
     when '200'
       JSON.parse(response.body)
@@ -43,9 +37,9 @@ module AccessTokenAgent
     end
   end
 
-  def self.request(credentials)
+  def self.request
     request = Net::HTTP::Post.new(auth_uri)
-    request.basic_auth credentials.client_id, credentials.client_secret
+    request.basic_auth client_id, client_secret
     request.form_data = { 'grant_type' => 'client_credentials' }
 
     Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
@@ -58,11 +52,19 @@ module AccessTokenAgent
   end
 
   def self.configure(options)
-    @auth_config ||= options
+    @auth_config = auth_config.merge(options)
   end
 
   def self.auth_config
-    @auth_config
+    @auth_config || {}
+  end
+
+  def self.client_id
+    @auth_config['client_id']
+  end
+
+  def self.client_secret
+    @auth_config['client_secret']
   end
 
   def self.env
