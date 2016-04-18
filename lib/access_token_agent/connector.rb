@@ -7,7 +7,7 @@ module AccessTokenAgent
     end
 
     def authenticate
-      return if fake_authenticate
+      return if @fake_authenticate
       fetch_token unless @known_token && @known_token.valid?
       @known_token.value
     end
@@ -30,7 +30,7 @@ module AccessTokenAgent
 
     def request
       request = Net::HTTP::Post.new(auth_uri)
-      request.basic_auth client_id, client_secret
+      request.basic_auth @client_id, @client_secret
       request.form_data = { 'grant_type' => 'client_credentials' }
 
       Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
@@ -38,26 +38,18 @@ module AccessTokenAgent
       end
     end
 
-    def configure(options)
-      @auth_config = options.select do |key, _value|
-        %w(base_uri client_id client_secret fake_authenticate).include? key
-      end
+    def configure(base_uri:,
+                  client_id:,
+                  client_secret:,
+                  fake_authenticate: false)
+      @base_uri = base_uri
+      @client_id = client_id
+      @client_secret = client_secret
+      @fake_authenticate = fake_authenticate
     end
 
     def auth_uri
-      @auth_uri ||= URI("#{@auth_config['base_uri']}/oauth/token")
-    end
-
-    def client_id
-      @auth_config['client_id']
-    end
-
-    def client_secret
-      @auth_config['client_secret']
-    end
-
-    def fake_authenticate
-      @auth_config['fake_authenticate']
+      @auth_uri ||= URI("#{@base_uri}/oauth/token")
     end
 
     def env
