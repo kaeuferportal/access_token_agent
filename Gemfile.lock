@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    access_token_agent (0.0.1)
+    access_token_agent (1.0.0)
 
 GEM
   remote: https://rubygems.org/
