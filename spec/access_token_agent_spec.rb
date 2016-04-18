@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'shared_examples_for_access_token_agent'
 module AccessTokenAgent
   describe Connector do
     let(:options) do
@@ -52,17 +52,7 @@ module AccessTokenAgent
             end
           end
 
-          context 'and the credentials are invalid' do
-            let(:options) do
-              { base_uri: 'http://localhost:8012',
-                client_id: 'test_app',
-                client_secret: '157a94675f95' }
-            end
-
-            it 'throws an UnauthorizedError' do
-              expect { subject }.to raise_error UnauthorizedError
-            end
-          end
+          it_behaves_like 'with invalid credentials'
         end
       end
 
@@ -79,17 +69,7 @@ module AccessTokenAgent
           end
         end
 
-        context 'and the credentials are invalid' do
-          let(:options) do
-            { base_uri: 'http://localhost:8012',
-              client_id: 'test_app',
-              client_secret: '157a94675f95' }
-          end
-
-          it 'throws an UnauthorizedError' do
-            expect { subject }.to raise_error UnauthorizedError
-          end
-        end
+        it_behaves_like 'with invalid credentials'
       end
     end
 
@@ -108,17 +88,7 @@ module AccessTokenAgent
         end
       end
 
-      context 'when credentials are invalid' do
-        let(:options) do
-          { base_uri: 'http://localhost:8012',
-            client_id: 'test_app',
-            client_secret: '157a94675f95' }
-        end
-
-        it 'throws an UnauthorizedError' do
-          expect { subject }.to raise_error UnauthorizedError
-        end
-      end
+      it_behaves_like 'with invalid credentials'
 
       context 'when request is not successful' do
         it 'throws an Error' do
