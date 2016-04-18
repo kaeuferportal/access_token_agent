@@ -2,8 +2,14 @@ require 'net/http'
 
 module AccessTokenAgent
   class Connector
-    def initialize(options)
-      configure options
+    def initialize(base_uri:,
+                   client_id:,
+                   client_secret:,
+                   fake_authenticate: false)
+      @base_uri = base_uri
+      @client_id = client_id
+      @client_secret = client_secret
+      @fake_authenticate = fake_authenticate
     end
 
     def authenticate
@@ -36,16 +42,6 @@ module AccessTokenAgent
       Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
         http.request(request)
       end
-    end
-
-    def configure(base_uri:,
-                  client_id:,
-                  client_secret:,
-                  fake_authenticate: false)
-      @base_uri = base_uri
-      @client_id = client_id
-      @client_secret = client_secret
-      @fake_authenticate = fake_authenticate
     end
 
     def auth_uri
