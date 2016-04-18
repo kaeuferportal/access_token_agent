@@ -47,9 +47,5 @@ module AccessTokenAgent
     def auth_uri
       @auth_uri ||= URI("#{@base_uri}/oauth/token")
     end
-
-    def env
-      ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
-    end
   end
 end
