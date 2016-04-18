@@ -3,10 +3,10 @@ require 'spec_helper'
 module AccessTokenAgent
   describe Connector do
     let(:options) do
-      { base_uri: 'http://localhost:8012',
-        client_id: 'test_app',
-        client_secret: '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
-                       'e2a858574dff3a949' }
+      { 'base_uri' => 'http://localhost:8012',
+        'client_id' => 'test_app',
+        'client_secret' => '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
+                           'e2a858574dff3a949' }
     end
     let(:agent) { Connector.new(options) }
 
@@ -82,9 +82,9 @@ module AccessTokenAgent
 
       context 'when credentials are invalid' do
         let(:options) do
-          { base_uri: 'http://localhost:8012',
-            client_id: 'test_app',
-            client_secret: '157a94675f95' }
+          { 'base_uri' => 'http://localhost:8012',
+            'client_id' => 'test_app',
+            'client_secret' => '157a94675f95' }
         end
 
         it 'throws an UnauthorizedError' do

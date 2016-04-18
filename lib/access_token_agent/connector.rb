@@ -39,20 +39,20 @@ module AccessTokenAgent
 
     def configure(options)
       @auth_config = options.select do |key, _value|
-        [:base_uri, :client_id, :client_secret].include? key
+        ['base_uri', 'client_id', 'client_secret'].include? key
       end
     end
 
     def auth_uri
-      @base_uri ||= URI("#{@auth_config[:base_uri]}/oauth/token")
+      @base_uri ||= URI("#{@auth_config['base_uri']}/oauth/token")
     end
 
     def client_id
-      @auth_config[:client_id]
+      @auth_config['client_id']
     end
 
     def client_secret
-      @auth_config[:client_secret]
+      @auth_config['client_secret']
     end
 
     def env
