@@ -45,7 +45,7 @@ module AccessTokenAgent
     end
 
     def auth_uri
-      @base_uri ||= URI("#{@auth_config['base_uri']}/oauth/token")
+      @auth_uri ||= URI("#{@auth_config['base_uri']}/oauth/token")
     end
 
     def client_id
