@@ -42,8 +42,8 @@ module AccessTokenAgent
             end
 
             it 'returns a new token value' do
-              expect(subject).to eq 'fa9724f775c8949bb2d680c7cf11f4d40b92879f1' \
-                                    '6987c0929a78e7a3ce893f4'
+              expect(subject).to eq 'fa9724f775c8949bb2d680c7cf11f4d40b92879' \
+                                    'f16987c0929a78e7a3ce893f4'
             end
 
             it 'calls auth project' do
@@ -69,8 +69,8 @@ module AccessTokenAgent
       context 'when no access_token is known for the credentials', :vcr do
         context 'and the credentials are valid' do
           it 'returns a new token value' do
-            expect(subject).to eq 'b9143de417609e7302bd84fa13034c7557c1eb69a7a' \
-                                  'ad7362b033c3b4002a858'
+            expect(subject).to eq 'b9143de417609e7302bd84fa13034c7557c1eb69a' \
+                                  '7aad7362b033c3b4002a858'
           end
 
           it 'calls auth project' do
