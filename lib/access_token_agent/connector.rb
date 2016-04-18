@@ -7,6 +7,7 @@ module AccessTokenAgent
     end
 
     def authenticate
+      return if fake_authenticate
       fetch_token unless @known_token && @known_token.valid?
       @known_token.value
     end
@@ -39,7 +40,7 @@ module AccessTokenAgent
 
     def configure(options)
       @auth_config = options.select do |key, _value|
-        ['base_uri', 'client_id', 'client_secret'].include? key
+        ['base_uri', 'client_id', 'client_secret', 'fake_authenticate'].include? key
       end
     end
 
@@ -53,6 +54,10 @@ module AccessTokenAgent
 
     def client_secret
       @auth_config['client_secret']
+    end
+
+    def fake_authenticate
+      @auth_config['fake_authenticate']
     end
 
     def env
