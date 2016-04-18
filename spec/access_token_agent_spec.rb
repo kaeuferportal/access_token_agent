@@ -36,13 +36,41 @@ module AccessTokenAgent
         context 'and it is invalid', :vcr do
           before { allow(known_token).to receive(:valid?).and_return(false) }
 
-          it 'does not return the known token value' do
-            expect(subject).not_to eq known_token.value
+          context 'and the credentials are valid' do
+            it 'does not return the known token value' do
+              expect(subject).not_to eq known_token.value
+            end
+
+            it 'returns a new token value' do
+              expect(subject).to eq 'fa9724f775c8949bb2d680c7cf11f4d40b92879f1' \
+                                    '6987c0929a78e7a3ce893f4'
+            end
+
+            it 'calls auth project' do
+              expect(Net::HTTP).to receive(:start).and_call_original
+              subject
+            end
           end
 
+          context 'and the credentials are invalid' do
+            let(:options) do
+              { base_uri: 'http://localhost:8012',
+                client_id: 'test_app',
+                client_secret: '157a94675f95' }
+            end
+
+            it 'throws an UnauthorizedError' do
+              expect { subject }.to raise_error UnauthorizedError
+            end
+          end
+        end
+      end
+
+      context 'when no access_token is known for the credentials', :vcr do
+        context 'and the credentials are valid' do
           it 'returns a new token value' do
-            expect(subject).to eq 'fa9724f775c8949bb2d680c7cf11f4d40b92879f1' \
-                                  '6987c0929a78e7a3ce893f4'
+            expect(subject).to eq 'b9143de417609e7302bd84fa13034c7557c1eb69a7a' \
+                                  'ad7362b033c3b4002a858'
           end
 
           it 'calls auth project' do
@@ -50,17 +78,17 @@ module AccessTokenAgent
             subject
           end
         end
-      end
 
-      context 'when no access_token is known for the credentials', :vcr do
-        it 'returns a new token value' do
-          expect(subject).to eq 'b9143de417609e7302bd84fa13034c7557c1eb69a7a' \
-                                'ad7362b033c3b4002a858'
-        end
+        context 'and the credentials are invalid' do
+          let(:options) do
+            { base_uri: 'http://localhost:8012',
+              client_id: 'test_app',
+              client_secret: '157a94675f95' }
+          end
 
-        it 'calls auth project' do
-          expect(Net::HTTP).to receive(:start).and_call_original
-          subject
+          it 'throws an UnauthorizedError' do
+            expect { subject }.to raise_error UnauthorizedError
+          end
         end
       end
     end
