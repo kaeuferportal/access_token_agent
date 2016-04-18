@@ -61,7 +61,7 @@ module AccessTokenAgent
     end
 
     def env
-      ENV['RACK_ENV'] || 'development'
+      ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
     end
   end
 end
