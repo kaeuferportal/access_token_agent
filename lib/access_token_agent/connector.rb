@@ -40,7 +40,7 @@ module AccessTokenAgent
 
     def configure(options)
       @auth_config = options.select do |key, _value|
-        ['base_uri', 'client_id', 'client_secret', 'fake_authenticate'].include? key
+        %w(base_uri client_id client_secret fake_authenticate).include? key
       end
     end
 
