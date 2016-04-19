@@ -34,9 +34,9 @@ Optional parameters:
 
 ```ruby
 @access_token_agent =
-  AccessTokenAgent::Connector.new({ base_uri: https://auth.kaeuferportal.de,
-                                    client_id: beratung,
-                                    client_secret: very_secure_and_secret })
+  AccessTokenAgent::Connector.new(base_uri: 'https://auth.kaeuferportal.de',
+                                  client_id: 'beratung',
+                                  client_secret: 'very_secure_and_secret')
 ```
 
 ## Usage
