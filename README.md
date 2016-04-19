@@ -1,7 +1,7 @@
 Handles authentication against Käuferportal
 
-Retrieves an access token from auth.kaeuferportal.de using the supplied
-credentials.
+Retrieves an access token from https://auth.kaeuferportal.de using the
+OAuth2 [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.4).
 
 ## Installation
 
