@@ -38,8 +38,8 @@ module AccessTokenAgent
       request = Net::HTTP::Post.new(auth_uri)
       request.basic_auth @client_id, @client_secret
       request.form_data = { 'grant_type' => 'client_credentials' }
-
-      Net::HTTP.start(auth_uri.hostname, auth_uri.port) do |http|
+      use_ssl = auth_uri.scheme == 'https'
+      Net::HTTP.start(auth_uri.hostname, auth_uri.port, use_ssl: use_ssl) do |http|
         http.request(request)
       end
     end
