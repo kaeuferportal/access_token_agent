@@ -30,7 +30,7 @@ module AccessTokenAgent
       when '401'
         raise UnauthorizedError
       else
-        raise Error
+        raise Error, "status: #{response.code}, body: #{response.body}"
       end
     end
 
