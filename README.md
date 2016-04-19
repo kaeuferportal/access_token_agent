@@ -21,14 +21,16 @@ Create an instance of AccessTokenAgent::Connector with the desired
 configuration and use that instance to authenticate.
 
 Needs the following parameters:
-`base_uri` - the server address where auth is running.
-`client_id` - the client_id of the project using this gem.
-`client_secret` - the client_secret of the project using this gem.
+
+* `base_uri` - the server address where auth is running.
+* `client_id` - the client_id of the application using this gem.
+* `client_secret` - the client_secret of the application using this gem.
 
 `client_id` and `client_secret` must correspond to an application in auth.
 
 Optional parameters:
-`fake_authentication` - do not connect to auth and return nothing.
+
+* `fake_authentication` - if true, do not connect to auth and return nothing.
 
 ### Example
 
