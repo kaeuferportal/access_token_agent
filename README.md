@@ -22,7 +22,7 @@ configuration and use that instance to authenticate.
 
 Needs the following parameters:
 
-* `base_uri` - the server address where auth is running.
+* `host` - the server address where auth is running.
 * `client_id` - the client_id of the application using this gem.
 * `client_secret` - the client_secret of the application using this gem.
 
@@ -36,7 +36,7 @@ Optional parameters:
 
 ```ruby
 @access_token_agent =
-  AccessTokenAgent::Connector.new(base_uri: 'https://auth.kaeuferportal.de',
+  AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
                                   client_id: 'beratung',
                                   client_secret: 'very_secure_and_secret')
 ```

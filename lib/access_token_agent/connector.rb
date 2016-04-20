@@ -2,11 +2,11 @@ require 'net/http'
 
 module AccessTokenAgent
   class Connector
-    def initialize(base_uri:,
+    def initialize(host:,
                    client_id:,
                    client_secret:,
                    fake_authenticate: false)
-      @base_uri = base_uri
+      @host = host
       @client_id = client_id
       @client_secret = client_secret
       @fake_authenticate = fake_authenticate
@@ -47,7 +47,7 @@ module AccessTokenAgent
     end
 
     def auth_uri
-      @auth_uri ||= URI("#{@base_uri}/oauth/token")
+      @auth_uri ||= URI("#{@host}/oauth/token")
     end
   end
 end

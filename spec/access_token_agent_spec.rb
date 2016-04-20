@@ -3,7 +3,7 @@ require 'shared_examples_for_access_token_agent'
 module AccessTokenAgent
   describe Connector do
     let(:options) do
-      { base_uri: 'http://localhost:8012',
+      { host: 'http://localhost:8012',
         client_id: 'test_app',
         client_secret: '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
                        'e2a858574dff3a949' }

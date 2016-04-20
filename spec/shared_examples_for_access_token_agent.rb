@@ -1,6 +1,6 @@
 RSpec.shared_examples 'with invalid credentials' do
   let(:options) do
-    { base_uri: 'http://localhost:8012',
+    { host: 'http://localhost:8012',
       client_id: 'test_app',
       client_secret: '157a94675f95' }
   end
