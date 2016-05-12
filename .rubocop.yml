@@ -1,8 +1,31 @@
 AllCops:
   TargetRubyVersion: 2.1
+  Exclude:
+    - 'db/schema.rb'
+    - 'doc/**/*'
+
+Style/AsciiComments:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Style/AsciiComments:
+# While it is very often useful to separate numbers after every three digits
+# for readability, this mostly doesn't make sense if the number doesn't
+# represent an amount but rather an identifier. Thus the use of underscores
+# every three digits is recommended but not enforced.
+Style/NumericLiterals:
+  Enabled: false
+
+# Do not force the same one letter variable names for all occurences of inject
+Style/SingleLineBlockParams:
+  Enabled: false
+
+# No significant improvement in speed or memory usage apparent. Readability is
+# atrocious.
+Performance/Casecmp:
+  Enabled: false
+
+# Not safe in a rails context, since Relation.count is != Enumerable.count
+Performance/Count:
   Enabled: false
