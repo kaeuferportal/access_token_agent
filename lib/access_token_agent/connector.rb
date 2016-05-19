@@ -5,15 +5,15 @@ module AccessTokenAgent
     def initialize(host:,
                    client_id:,
                    client_secret:,
-                   fake_authenticate: false)
+                   fake_auth: false)
       @host = host
       @client_id = client_id
       @client_secret = client_secret
-      @fake_authenticate = fake_authenticate
+      @fake_auth = fake_auth
     end
 
     def authenticate
-      return if @fake_authenticate
+      return if @fake_auth
       fetch_token unless @known_token && @known_token.valid?
       @known_token.value
     end

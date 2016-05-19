@@ -30,7 +30,7 @@ Needs the following parameters:
 
 Optional parameters:
 
-* `fake_authentication` - if true, do not connect to auth and return nothing.
+* `fake_auth` - if true, do not connect to auth and return nothing.
 
 ### Example
 

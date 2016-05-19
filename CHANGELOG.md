@@ -1,3 +1,8 @@
+## 3.0.0
+
+- Rename fake_authenticate parameter to fake_auth
+    - This is compatible with the file format that AuthConnector already expects
+
 ## 2.0.1
 
 - Remove obsolete class Credentials
