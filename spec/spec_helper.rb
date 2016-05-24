@@ -1,5 +1,8 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'simplecov'
+SimpleCov.start
+
 require 'access_token_agent'
 require 'webmock/rspec'
 require 'vcr'
