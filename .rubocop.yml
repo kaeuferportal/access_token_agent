@@ -4,6 +4,7 @@ AllCops:
     - 'db/schema.rb'
     - 'doc/**/*'
     - 'Gemfile'
+    - '*.gemspec'
 
 Style/AsciiComments:
   Enabled: false

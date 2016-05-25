@@ -1,3 +1,5 @@
+# coding: utf-8
+
 Gem::Specification.new do |s|
   s.name        = 'access_token_agent'
   s.version     = '3.0.0'
