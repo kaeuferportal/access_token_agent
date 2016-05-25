@@ -6,7 +6,7 @@ variables:
 before_script:
   - mkdir -p /root/.ssh && ssh-keyscan -H codevault.io > /root/.ssh/known_hosts 2>/dev/null
   - bundle config jobs 8
-  - export LC_ALL="en_US.UTF-8"
+  - export LC_ALL=en_US.UTF-8
   - bundle install --path=/tmp/bundler --quiet
 
 rspec:
