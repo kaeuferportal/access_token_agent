@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Raise `AccessTokenAgent::ConnectionError` if the auth service could not be reached.
+
 ## 3.0.0
 
 - Rename fake_authenticate parameter to fake_auth

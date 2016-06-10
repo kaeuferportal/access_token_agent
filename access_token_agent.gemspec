@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'access_token_agent'
-  s.version     = '3.0.0'
+  s.version     = '3.1.0'
   s.date        = '2016-04-08'
   s.summary     = 'Handles authentication against Käuferportal.'
   s.description = 'Retrieves an access token from auth.kaeuferportal.de ' \

@@ -25,13 +25,13 @@ module AccessTokenAgent
     def from_auth
       response = request
       case response.code
-      when '200'
-        JSON.parse(response.body)
-      when '401'
-        raise UnauthorizedError
+      when '200' then JSON.parse(response.body)
+      when '401' then raise UnauthorizedError
       else
         raise Error, "status: #{response.code}, body: #{response.body}"
       end
+    rescue Errno::ECONNREFUSED
+      raise ConnectionError
     end
 
     def request

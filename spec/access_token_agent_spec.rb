@@ -95,6 +95,16 @@ module AccessTokenAgent
           expect { subject }.to raise_error Error
         end
       end
+
+      context 'when the connection fails' do
+        before do
+          allow(Net::HTTP).to receive(:start).and_raise(Errno::ECONNREFUSED)
+        end
+
+        it 'throws a ConnectionError' do
+          expect { subject }.to raise_error ConnectionError
+        end
+      end
     end
   end
 end
