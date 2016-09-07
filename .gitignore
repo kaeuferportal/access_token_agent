@@ -1,3 +1,6 @@
 Gemfile.lock
 coverage/
 tmp/
+
+.ruby-gemset
+access_token_agent-*.gem
