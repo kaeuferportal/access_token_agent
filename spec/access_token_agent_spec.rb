@@ -73,8 +73,8 @@ module AccessTokenAgent
       end
     end
 
-    describe '.from_auth', :vcr do
-      subject { agent.from_auth }
+    describe '.fetch_token_hash', :vcr do
+      subject { agent.send(:fetch_token_hash) }
 
       context 'when credentials are valid' do
         it 'returns a Hash containing the access_token' do

@@ -14,16 +14,18 @@ module AccessTokenAgent
 
     def authenticate
       return if @fake_auth
-      fetch_token unless @known_token && @known_token.valid?
+      fetch_token! unless @known_token && @known_token.valid?
       @known_token.value
     end
 
-    def fetch_token
-      @known_token = Token.new(from_auth)
+    private
+
+    def fetch_token!
+      @known_token = Token.new(fetch_token_hash)
     end
 
-    def from_auth
-      response = request
+    def fetch_token_hash
+      response = perform_request
       case response.code
       when '200' then JSON.parse(response.body)
       when '401' then raise UnauthorizedError
@@ -34,7 +36,7 @@ module AccessTokenAgent
       raise ConnectionError
     end
 
-    def request
+    def perform_request
       request = Net::HTTP::Post.new(auth_uri)
       request.basic_auth @client_id, @client_secret
       request.form_data = { 'grant_type' => 'client_credentials' }
