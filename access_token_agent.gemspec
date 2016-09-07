@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'access_token_agent'
-  s.version     = '3.1.0'
+  s.version     = '3.1.1'
   s.date        = '2016-04-08'
   s.summary     = 'Handles authentication against an OAuth2 provider'
   s.homepage    = 'https://github.com/kaeuferportal/access_token_agent'
@@ -11,7 +11,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Beko Käuferportal GmbH']
   s.email       = 'oss@kaeuferportal.de'
   s.license     = 'MIT'
-  s.files       = ['lib/access_token_agent.rb']
+  s.files       = `git ls-files -z`.split("\x0")
+                                   .reject { |f| f.match(%r{^spec/}) }
 
   s.add_development_dependency 'bundler', '~> 1.11'
   s.add_development_dependency 'rspec', '~> 3.4'

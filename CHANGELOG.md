@@ -1,3 +1,7 @@
+## 3.1.1
+
+- Fix broken gem release (missing files)
+
 ## 3.1.0
 
 - Raise `AccessTokenAgent::ConnectionError` if the auth service could not be reached.
