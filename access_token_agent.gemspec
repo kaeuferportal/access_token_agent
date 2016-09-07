@@ -4,11 +4,12 @@ Gem::Specification.new do |s|
   s.name        = 'access_token_agent'
   s.version     = '3.1.0'
   s.date        = '2016-04-08'
-  s.summary     = 'Handles authentication against Käuferportal.'
-  s.description = 'Retrieves an access token from auth.kaeuferportal.de ' \
+  s.summary     = 'Handles authentication against an OAuth2 provider'
+  s.description = 'Retrieves an access token from an OAuth2 provider' \
                   'using the supplied credentials.'
-  s.authors     = ['Hagen Mahnke']
-  s.email       = 'hagenmahnke@googlemail.com'
+  s.authors     = ['Beko Käuferportal GmbH']
+  s.email       = 'oss@kaeuferportal.de'
+  s.license     = 'MIT'
   s.files       = ['lib/access_token_agent.rb']
 
   s.add_development_dependency 'bundler', '~> 1.11'

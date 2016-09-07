@@ -1,6 +1,10 @@
-Handles authentication against Käuferportal
+[![Build Status](https://travis-ci.org/kaeuferportal/access_token_agent.svg?branch=master)](https://travis-ci.org/kaeuferportal/access_token_agent)
 
-Retrieves an access token from https://auth.kaeuferportal.de using the
+# AccessTokenAgent
+
+Handles authentication against an OAuth2 provider.
+
+Retrieves an access token from the authentication server using the
 OAuth2 [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.4).
 
 ## Installation
@@ -8,7 +12,7 @@ OAuth2 [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.4
 Add this line to your application's Gemfile:
 
 ```ruby
-codevault 'access_token_agent', 'kaeuferportal/access_token_agent'
+gem 'access_token_agent', '~> 3.1'
 ```
 
 And then execute:
@@ -22,23 +26,21 @@ configuration and use that instance to authenticate.
 
 Needs the following parameters:
 
-* `host` - the server address where auth is running.
+* `host` - the server address where the auth provider is running.
 * `client_id` - the client_id of the application using this gem.
 * `client_secret` - the client_secret of the application using this gem.
 
-`client_id` and `client_secret` must correspond to an application in auth.
-
 Optional parameters:
 
-* `fake_auth` - if true, do not connect to auth and return nothing.
+* `fake_auth` - if true, do not connect to the auth service and return
+   an empty access token (`nil`).
 
 ### Example
 
 ```ruby
-@access_token_agent =
-  AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
-                                  client_id: 'beratung',
-                                  client_secret: 'very_secure_and_secret')
+AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
+                                client_id: 'my_client',
+                                client_secret: 'very_secure_and_secret')
 ```
 
 ## Usage
@@ -58,5 +60,5 @@ following:
  - raises an Error if the auth response code is neither 200 nor 401
 
 As long as a valid AccessToken is present a call to authenticate simply returns
-that AccessToken. An AccessToken is valid for some time. The exact value is
+that AccessToken. An AccessToken is valid for a limited time. The exact value is
 determined by the auth response which contains an `expires_at` parameter.
