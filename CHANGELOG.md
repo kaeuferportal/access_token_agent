@@ -3,6 +3,7 @@
 - Add `http_auth_header` method to the connector, since this is the most
   common use case
 - Deprecate the `authenticate` method in favor of the new `token` method
+- Allow to configure from which path to get the access token
 - Put all errors into the AccessTokenAgent namespace
 
 ## 3.1.1

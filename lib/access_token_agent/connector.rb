@@ -5,11 +5,13 @@ module AccessTokenAgent
     def initialize(host:,
                    client_id:,
                    client_secret:,
-                   fake_auth: false)
+                   fake_auth: false,
+                   access_token_path: '/oauth/token')
       @host = host
       @client_id = client_id
       @client_secret = client_secret
       @fake_auth = fake_auth
+      @access_token_path = access_token_path
     end
 
     def http_auth_header
@@ -58,7 +60,7 @@ module AccessTokenAgent
     end
 
     def auth_uri
-      @auth_uri ||= URI("#{@host}/oauth/token")
+      @auth_uri ||= URI("#{@host}#{@access_token_path}")
     end
   end
 end

@@ -2,8 +2,9 @@ require 'spec_helper'
 require 'shared_examples_for_access_token_agent'
 module AccessTokenAgent
   describe Connector do
+    let(:host) { 'http://localhost:8012' }
     let(:options) do
-      { host: 'http://localhost:8012',
+      { host: host,
         client_id: 'test_app',
         client_secret: '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
                        'e2a858574dff3a949' }
@@ -103,6 +104,36 @@ module AccessTokenAgent
 
         it 'throws a ConnectionError' do
           expect { subject }.to raise_error ConnectionError
+        end
+      end
+    end
+
+    describe '.perform_request' do
+      let(:request_mock) { double(Net::HTTP::Post).as_null_object }
+      subject { agent.send(:perform_request) }
+
+      before do
+        allow(Net::HTTP).to receive(:start)
+      end
+
+      it 'calls the expected URL' do
+        expected_uri = URI("#{host}/oauth/token")
+        expect(Net::HTTP::Post)
+          .to receive(:new).with(expected_uri).and_return(request_mock)
+        subject
+      end
+
+      context 'custom access_token_path' do
+        let(:custom_path) { '/custom_path/to/token' }
+        before do
+          options.merge!(access_token_path: custom_path)
+        end
+
+        it 'calls the expected URL' do
+          expected_uri = URI("#{host}#{custom_path}")
+          expect(Net::HTTP::Post)
+            .to receive(:new).with(expected_uri).and_return(request_mock)
+          subject
         end
       end
     end
