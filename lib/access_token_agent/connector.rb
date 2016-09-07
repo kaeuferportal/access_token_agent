@@ -20,7 +20,8 @@ module AccessTokenAgent
 
     def token
       return if @fake_auth
-      fetch_token! unless @known_token && @known_token.valid?
+      @known_token = fetch_token unless @known_token && @known_token.valid?
+
       @known_token.value
     end
 
@@ -31,8 +32,8 @@ module AccessTokenAgent
 
     private
 
-    def fetch_token!
-      @known_token = Token.new(fetch_token_hash)
+    def fetch_token
+      Token.new(fetch_token_hash)
     end
 
     def fetch_token_hash
