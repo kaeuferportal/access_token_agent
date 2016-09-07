@@ -5,25 +5,39 @@ module AccessTokenAgent
     def initialize(host:,
                    client_id:,
                    client_secret:,
-                   fake_auth: false)
+                   fake_auth: false,
+                   access_token_path: '/oauth/token')
       @host = host
       @client_id = client_id
       @client_secret = client_secret
       @fake_auth = fake_auth
+      @access_token_path = access_token_path
     end
 
-    def authenticate
+    def http_auth_header
+      { Authorization: "Bearer #{token}" }
+    end
+
+    def token
       return if @fake_auth
-      fetch_token unless @known_token && @known_token.valid?
+      @known_token = fetch_token unless @known_token && @known_token.valid?
+
       @known_token.value
     end
 
-    def fetch_token
-      @known_token = Token.new(from_auth)
+    def authenticate
+      warn '[DEPRECATION] `authenticate` is deprecated.  Use `token` instead.'
+      token
     end
 
-    def from_auth
-      response = request
+    private
+
+    def fetch_token
+      Token.new(fetch_token_hash)
+    end
+
+    def fetch_token_hash
+      response = perform_request
       case response.code
       when '200' then JSON.parse(response.body)
       when '401' then raise UnauthorizedError
@@ -34,7 +48,7 @@ module AccessTokenAgent
       raise ConnectionError
     end
 
-    def request
+    def perform_request
       request = Net::HTTP::Post.new(auth_uri)
       request.basic_auth @client_id, @client_secret
       request.form_data = { 'grant_type' => 'client_credentials' }
@@ -47,7 +61,7 @@ module AccessTokenAgent
     end
 
     def auth_uri
-      @auth_uri ||= URI("#{@host}/oauth/token")
+      @auth_uri ||= URI("#{@host}#{@access_token_path}")
     end
   end
 end

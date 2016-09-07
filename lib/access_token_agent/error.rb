@@ -1,2 +1,4 @@
-class Error < StandardError
+module AccessTokenAgent
+  class Error < StandardError
+  end
 end
