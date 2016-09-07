@@ -1,3 +1,7 @@
+## master
+
+- FIX: Put all errors into the AccessTokenAgent namespace 
+
 ## 3.1.1
 
 - Fix broken gem release (missing files)
