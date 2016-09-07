@@ -5,6 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '3.1.0'
   s.date        = '2016-04-08'
   s.summary     = 'Handles authentication against an OAuth2 provider'
+  s.homepage    = 'https://github.com/kaeuferportal/access_token_agent'
   s.description = 'Retrieves an access token from an OAuth2 provider' \
                   'using the supplied credentials.'
   s.authors     = ['Beko Käuferportal GmbH']
