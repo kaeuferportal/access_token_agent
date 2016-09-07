@@ -12,10 +12,19 @@ module AccessTokenAgent
       @fake_auth = fake_auth
     end
 
-    def authenticate
+    def http_auth_header
+      { Authorization: "Bearer #{token}" }
+    end
+
+    def token
       return if @fake_auth
       fetch_token! unless @known_token && @known_token.valid?
       @known_token.value
+    end
+
+    def authenticate
+      warn '[DEPRECATION] `authenticate` is deprecated.  Use `token` instead.'
+      token
     end
 
     private

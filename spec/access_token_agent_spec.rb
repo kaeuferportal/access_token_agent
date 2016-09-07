@@ -10,8 +10,8 @@ module AccessTokenAgent
     end
     let(:agent) { Connector.new(options) }
 
-    describe '.authenticate' do
-      subject { agent.authenticate }
+    describe '.token' do
+      subject { agent.token }
 
       context 'when an access_token is known for the credentials' do
         let(:known_token) do
