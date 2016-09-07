@@ -1,8 +1,12 @@
 # coding: utf-8
 
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'access_token_agent/version'
+
 Gem::Specification.new do |s|
   s.name        = 'access_token_agent'
-  s.version     = '3.1.1'
+  s.version     = AccessTokenAgent::VERSION
   s.date        = '2016-04-08'
   s.summary     = 'Handles authentication against an OAuth2 provider'
   s.homepage    = 'https://github.com/kaeuferportal/access_token_agent'
