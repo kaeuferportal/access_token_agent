@@ -1,5 +1,9 @@
 ## master
 
+*no unreleased changes*
+
+## 3.2.0
+
 - Add `http_auth_header` method to the connector, since this is the most
   common use case
 - Deprecate the `authenticate` method in favor of the new `token` method
