@@ -5,6 +5,7 @@
 - Deprecate the `authenticate` method in favor of the new `token` method
 - Allow to configure from which path to get the access token
 - Put all errors into the AccessTokenAgent namespace
+- Actually return a token when faking auth
 
 ## 3.1.1
 
