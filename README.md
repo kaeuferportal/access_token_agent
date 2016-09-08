@@ -36,7 +36,7 @@ Needs the following parameters to instantiate:
 Optional parameters:
 
 * `fake_auth` - if true, do not connect to the auth service and return
-   an empty access token (`nil`).
+   a faked access token.
 
 ### Example
 

@@ -2,6 +2,8 @@ require 'net/http'
 
 module AccessTokenAgent
   class Connector
+    FAKE_TOKEN = 'FakeAuthToken'.freeze
+
     def initialize(host:,
                    client_id:,
                    client_secret:,
@@ -19,7 +21,7 @@ module AccessTokenAgent
     end
 
     def token
-      return if @fake_auth
+      return FAKE_TOKEN if @fake_auth
       @known_token = fetch_token unless @known_token && @known_token.valid?
 
       @known_token.value
