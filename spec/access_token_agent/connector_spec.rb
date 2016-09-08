@@ -18,7 +18,7 @@ describe AccessTokenAgent::Connector do
       let(:known_token) do
         AccessTokenAgent::Token.new('expires_in' => 7200,
                                     'token_type' => 'bearer',
-                                    value: 'xy')
+                                    'access_token' => 'xy')
       end
 
       before { agent.instance_variable_set(:@known_token, known_token) }

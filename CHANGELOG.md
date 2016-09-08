@@ -6,6 +6,8 @@
 - Allow to configure from which path to get the access token
 - Put all errors into the AccessTokenAgent namespace
 - Actually return a token when faking auth
+- Rename error raised for unsupported token types
+- Ensure that access token response carries an access token
 
 ## 3.1.1
 
