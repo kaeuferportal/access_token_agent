@@ -2,6 +2,10 @@
 
 *no unreleased changes*
 
+## 3.2.1
+
+- Use a string as key in HTTP headers, to be compatible with Ruby < 2.3
+
 ## 3.2.0
 
 - Add `http_auth_header` method to the connector, since this is the most

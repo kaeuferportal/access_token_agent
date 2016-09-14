@@ -17,7 +17,7 @@ module AccessTokenAgent
     end
 
     def http_auth_header
-      { Authorization: "Bearer #{token}" }
+      { 'Authorization' => "Bearer #{token}" }
     end
 
     def token
