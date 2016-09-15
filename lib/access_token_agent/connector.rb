@@ -28,7 +28,8 @@ module AccessTokenAgent
     end
 
     def authenticate
-      warn '[DEPRECATION] `authenticate` is deprecated.  Use `token` instead.'
+      warn "[DEPRECATION] `#{self.class}.authenticate` is deprecated. " \
+           'Use `token` instead.'
       token
     end
 
