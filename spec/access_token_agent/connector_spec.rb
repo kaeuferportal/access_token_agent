@@ -76,6 +76,46 @@ describe AccessTokenAgent::Connector do
     end
   end
 
+  describe '.authenticate' do
+    let(:token) { 'mySecretToken' }
+    subject { agent.authenticate }
+
+    before do
+      allow(agent).to receive(:token)
+    end
+
+    it 'delegates to token' do
+      expect(agent).to receive(:token).and_return(token)
+      is_expected.to eql token
+    end
+
+    it 'prints a deprecation warning' do
+      expect(agent).to receive(:warn) do |message|
+        expect(message).to include('DEPRECATION')
+      end
+
+      subject
+    end
+  end
+
+  describe '.http_auth_header' do
+    let(:token) { 'mySecretToken' }
+    subject { agent.http_auth_header }
+
+    before do
+      allow(agent).to receive(:token).and_return(token)
+    end
+
+    it 'returns a hash with the Authorization header' do
+      expect(subject.keys.size).to eql 1
+      expect(subject.keys.first).to eql 'Authorization'
+    end
+
+    it 'uses the token as Bearer token' do
+      expect(subject['Authorization']).to eql 'Bearer ' + token
+    end
+  end
+
   describe '.fetch_token_hash', :vcr do
     subject { agent.send(:fetch_token_hash) }
 
