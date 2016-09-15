@@ -1,7 +1,10 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'codeclimate-test-reporter'
 require 'simplecov'
+CodeClimate::TestReporter.start
 SimpleCov.start
+SimpleCov.add_filter 'spec'
 
 require 'access_token_agent'
 require 'webmock/rspec'
