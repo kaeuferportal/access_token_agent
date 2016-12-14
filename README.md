@@ -32,14 +32,14 @@ Needs the following parameters to instantiate:
 * `host` - the server address where the auth provider is running.
 * `client_id` - the client_id of the application using this gem.
 * `client_secret` - the client_secret of the application using this gem.
-* `access_token_path` - Allows to customize the HTTP path where the
-  access token needs to be requested.
-  **Default:** `/oauth/token`
 
 Optional parameters:
 
 * `fake_auth` - if true, do not connect to the auth service and return
    a faked access token.
+* `access_token_path` - Allows to customize the HTTP path where the
+  access token needs to be requested.
+  **Default:** `/oauth/token`
 
 ### Example
 
