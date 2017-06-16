@@ -44,9 +44,9 @@ Optional parameters:
 ### Example
 
 ```ruby
-AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
-                                client_id: 'my_client',
-                                client_secret: 'very_secure_and_secret')
+@connector = AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
+                                             client_id: 'my_client',
+                                             client_secret: 'very_secure_and_secret')
 ```
 
 ## Usage
@@ -54,8 +54,9 @@ AccessTokenAgent::Connector.new(host: 'https://auth.kaeuferportal.de',
 Setup an AcccessTokenAgent::Connector instance (see Configuration) and call
 authenticate on it to receive your access_token.
 
-```
-@access_token_agent.authenticate
+```ruby
+@connector.authenticate
+ => "XYZ"
 ```
 
 When no valid AccessToken is present a call to authenticate returns one of the
@@ -68,3 +69,12 @@ following:
 As long as a valid AccessToken is present a call to authenticate simply returns
 that AccessToken. An AccessToken is valid for a limited time. The exact value is
 determined by the auth response which contains an `expires_at` parameter.
+
+### As HTTP Header
+
+Since the most common use case is to include the access token as [RFC 6750](https://tools.ietf.org/html/rfc6750) bearer token, there is a method that returns the `Authorization: Bearer XYZ` header as hash:
+
+```ruby
+@connector.http_auth_header
+ => { "Authorization" => "Bearer XYZ" } 
+```
