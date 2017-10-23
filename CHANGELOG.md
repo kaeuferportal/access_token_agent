@@ -2,6 +2,10 @@
 
 *no unreleased changes*
 
+## 3.3.0
+
+- Add `instance` accessor to `AccessTokenAgent::Connector`
+
 ## 3.2.1
 
 - Use a string as key in HTTP headers, to be compatible with Ruby < 2.3
