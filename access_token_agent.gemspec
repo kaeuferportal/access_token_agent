@@ -1,5 +1,3 @@
-# coding: utf-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'access_token_agent/version'
@@ -19,11 +17,11 @@ Gem::Specification.new do |s|
                                    .reject { |f| f.match(%r{^spec/}) }
 
   s.add_development_dependency 'bundler', '~> 1.11'
-  s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'pry', '~> 0.10'
-  s.add_development_dependency 'rubocop', '~> 0.39'
+  s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'rubocop', '0.51'
+  s.add_development_dependency 'simplecov', '~> 0.11'
   s.add_development_dependency 'vcr', '~> 3.0'
   s.add_development_dependency 'webmock', '~> 1.24'
-  s.add_development_dependency 'simplecov', '~> 0.11'
-  s.add_development_dependency 'codeclimate-test-reporter'
 end

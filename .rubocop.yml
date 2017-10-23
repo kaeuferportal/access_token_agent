@@ -1,28 +1,34 @@
 AllCops:
-  TargetRubyVersion: 2.1
   Exclude:
+    - 'bin/**/*'
     - 'db/schema.rb'
     - 'doc/**/*'
-    - 'Gemfile'
-    - '*.gemspec'
+    - 'docker_app/**/*'
+    - 'Guardfile'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
 
-Style/AsciiComments:
-  Enabled: false
+# We need to configure exemptions for blocks that we generally accept to be
+# long, since they are less comparable to methods and more comparable to
+# modules/classes.
+Metrics/BlockLength:
+  ExcludedMethods:
+    - context
+    - describe
+    - namespace
+  Exclude:
+    - 'config/environments/*.rb' # instead of excluding all :configure methods
+    - 'config/routes.rb'
 
 Style/Documentation:
   Enabled: false
-
-# Encoding comments are not neccessary in all 2.x versions of ruby, since
-# UTF-8 has become the default encoding.
-Style/Encoding:
-  EnforcedStyle: never
-  Enabled: true
 
 # This cop tries to make you use module_funtion instead of extend self
 # This is bad because both have their own use-case and should not be used
 # and sometimes cannot be used to do the same thing
 Style/ModuleFunction:
   Enabled: false
+
 # While it is very often useful to separate numbers after every three digits
 # for readability, this mostly doesn't make sense if the number doesn't
 # represent an amount but rather an identifier. Thus the use of underscores
