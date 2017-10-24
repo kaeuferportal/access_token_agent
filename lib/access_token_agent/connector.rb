@@ -4,6 +4,10 @@ module AccessTokenAgent
   class Connector
     FAKE_TOKEN = 'FakeAuthToken'.freeze
 
+    class << self
+      attr_accessor :instance
+    end
+
     def initialize(host:,
                    client_id:,
                    client_secret:,

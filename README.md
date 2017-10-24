@@ -49,13 +49,25 @@ Optional parameters:
                                              client_secret: 'very_secure_and_secret')
 ```
 
+## Sharing a connector
+
+When connecting to multiple endpoints you will commonly come across the need
+to share a single instance of a connector in multiple places, because your
+application will use the same configuration everywhere.
+
+You can use the convenience accessor `instance` for that:
+
+```ruby
+AccessTokenAgent::Connector.instance = AccessTokenAgent::Connector.new(...)
+```
+
 ## Usage
 
 Setup an AcccessTokenAgent::Connector instance (see Configuration) and call
-authenticate on it to receive your access_token.
+`authenticate` on it to receive your access_token.
 
 ```ruby
-@connector.authenticate
+AccessTokenAgent::Connector.instance.authenticate
  => "XYZ"
 ```
 
@@ -75,6 +87,6 @@ determined by the auth response which contains an `expires_at` parameter.
 Since the most common use case is to include the access token as [RFC 6750](https://tools.ietf.org/html/rfc6750) bearer token, there is a method that returns the `Authorization: Bearer XYZ` header as hash:
 
 ```ruby
-@connector.http_auth_header
- => { "Authorization" => "Bearer XYZ" } 
+AccessTokenAgent::Connector.instance.http_auth_header
+ => { "Authorization" => "Bearer XYZ" }
 ```
