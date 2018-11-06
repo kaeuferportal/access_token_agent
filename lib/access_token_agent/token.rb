@@ -21,7 +21,7 @@ module AccessTokenAgent
     private
 
     def validate_response(auth_response)
-      unless auth_response['token_type'] == 'bearer'
+      unless auth_response['token_type'].downcase == 'bearer'
         raise UnsupportedTokenTypeError, auth_response['token_type']
       end
 
