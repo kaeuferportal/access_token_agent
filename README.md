@@ -15,7 +15,7 @@ OAuth2 [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'access_token_agent', '~> 3.1'
+gem 'access_token_agent', '~> 3.4'
 ```
 
 And then execute:
