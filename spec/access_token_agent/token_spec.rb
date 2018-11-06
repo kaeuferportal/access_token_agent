@@ -60,6 +60,19 @@ module AccessTokenAgent
           expect { subject }.to raise_error MissingAccessToken
         end
       end
+
+      context 'when token_type is missing' do
+        let(:auth_response) do
+          {
+            'expires_in' => 3600,
+            'access_token' => 'test'
+          }
+        end
+
+        it 'raises a MissingTokenTypeError' do
+          expect { subject }.to raise_error MissingTokenType
+        end
+      end
     end
   end
 end
