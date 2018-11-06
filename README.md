@@ -22,7 +22,7 @@ And then execute:
 
     $ bundle
 
-## Basic Configuration
+## Basic configuration
 
 Create an instance of AccessTokenAgent::Connector with the desired
 configuration and use that instance to authenticate.
@@ -63,7 +63,7 @@ AccessTokenAgent::Connector.instance = AccessTokenAgent::Connector.new(...)
 
 ## Usage
 
-Setup an AcccessTokenAgent::Connector instance (see Configuration) and call
+Set up an AcccessTokenAgent::Connector instance (see Configuration) and call
 `authenticate` on it to receive your access_token.
 
 ```ruby
