@@ -2,6 +2,10 @@
 
 *no unreleased changes*
 
+## 3.4.0
+
+- Allows value of `token_type` to have any casing
+
 ## 3.3.0
 
 - Add `instance` accessor to `AccessTokenAgent::Connector`

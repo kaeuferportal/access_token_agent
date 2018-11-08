@@ -15,14 +15,14 @@ OAuth2 [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.4
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'access_token_agent', '~> 3.1'
+gem 'access_token_agent', '~> 3.4'
 ```
 
 And then execute:
 
     $ bundle
 
-## Basic Configuration
+## Basic configuration
 
 Create an instance of AccessTokenAgent::Connector with the desired
 configuration and use that instance to authenticate.
@@ -63,7 +63,7 @@ AccessTokenAgent::Connector.instance = AccessTokenAgent::Connector.new(...)
 
 ## Usage
 
-Setup an AcccessTokenAgent::Connector instance (see Configuration) and call
+Set up an AcccessTokenAgent::Connector instance (see Configuration) and call
 `authenticate` on it to receive your access_token.
 
 ```ruby

@@ -1,4 +1,5 @@
 require 'access_token_agent/missing_access_token'
+require 'access_token_agent/missing_token_type'
 require 'access_token_agent/unsupported_token_type_error'
 
 module AccessTokenAgent
@@ -21,7 +22,8 @@ module AccessTokenAgent
     private
 
     def validate_response(auth_response)
-      unless auth_response['token_type'] == 'bearer'
+      raise MissingTokenType if auth_response['token_type'].nil?
+      unless auth_response['token_type'].downcase == 'bearer'
         raise UnsupportedTokenTypeError, auth_response['token_type']
       end
 

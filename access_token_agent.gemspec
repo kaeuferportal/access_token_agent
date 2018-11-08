@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry', '~> 0.10'
   s.add_development_dependency 'rspec', '~> 3.4'
   s.add_development_dependency 'rubocop', '0.51'
-  s.add_development_dependency 'simplecov', '~> 0.11'
+  s.add_development_dependency 'simplecov', '~> 0.16'
   s.add_development_dependency 'vcr', '~> 3.0'
   s.add_development_dependency 'webmock', '~> 1.24'
 end
