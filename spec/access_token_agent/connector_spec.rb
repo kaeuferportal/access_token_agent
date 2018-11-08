@@ -17,7 +17,7 @@ describe AccessTokenAgent::Connector do
     context 'when an access_token is known for the credentials' do
       let(:known_token) do
         AccessTokenAgent::Token.new('expires_in' => 7200,
-                                    'token_type' => 'bearer',
+                                    'token_type' => 'Bearer',
                                     'access_token' => 'xy')
       end
 

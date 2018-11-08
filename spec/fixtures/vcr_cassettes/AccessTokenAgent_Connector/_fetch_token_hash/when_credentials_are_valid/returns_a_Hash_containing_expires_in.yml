@@ -50,7 +50,7 @@ http_interactions:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"access_token":"6c8ca820662ab58086de897d59ff4686a144cb977d4efbc30c6743a9f35938e2","token_type":"bearer","expires_in":7200,"created_at":1460709239}'
+      string: '{"access_token":"6c8ca820662ab58086de897d59ff4686a144cb977d4efbc30c6743a9f35938e2","token_type":"Bearer","expires_in":7200,"created_at":1460709239}'
     http_version: 
   recorded_at: Fri, 15 Apr 2016 08:33:59 GMT
 recorded_with: VCR 3.0.1
