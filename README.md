@@ -1,7 +1,6 @@
-[![Gem Version](https://badge.fury.io/rb/access_token_agent.svg)](https://badge.fury.io/rb/access_token_agent)
-[![Build Status](https://travis-ci.org/kaeuferportal/access_token_agent.svg?branch=master)](https://travis-ci.org/kaeuferportal/access_token_agent)
-[![Code Climate](https://codeclimate.com/github/kaeuferportal/access_token_agent/badges/gpa.svg)](https://codeclimate.com/github/kaeuferportal/access_token_agent)
-[![Test Coverage](https://codeclimate.com/github/kaeuferportal/access_token_agent/badges/coverage.svg)](https://codeclimate.com/github/kaeuferportal/access_token_agent/coverage)
+**You are viewing an archived version of this project.**
+
+**This project now lives in the aroundhome organization at https://github.com/aroundhome/access_token_agent**
 
 # AccessTokenAgent
 
