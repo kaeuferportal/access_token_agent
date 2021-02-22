@@ -5,7 +5,7 @@ module AccessTokenAgent
     subject { Token.new(auth_response) }
     let(:auth_response) do
       {
-        'token_type' => 'bearer',
+        'token_type' => 'Bearer',
         'expires_in' => 3600,
         'access_token' => 'test'
       }
@@ -19,7 +19,7 @@ module AccessTokenAgent
       context 'when Token has expired' do
         let(:auth_response) do
           {
-            'token_type' => 'bearer',
+            'token_type' => 'Bearer',
             'expires_in' => 0,
             'access_token' => 'test'
           }
@@ -51,7 +51,7 @@ module AccessTokenAgent
       context 'when access_token is missing' do
         let(:auth_response) do
           {
-            'token_type' => 'bearer',
+            'token_type' => 'Bearer',
             'expires_in' => 3600
           }
         end

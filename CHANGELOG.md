@@ -2,9 +2,13 @@
 
 *no unreleased changes*
 
+## 4.0.0
+
+- Breaking change: Require value of `token_type` to be title case (i.e., `Bearer`), to match the [Oauth 2 RFC](https://tools.ietf.org/html/rfc6750) and be compatible with `doorkeeper` version 5.0.0+
+
 ## 3.4.0
 
-- Allows value of `token_type` to have any casing
+- Allow value of `token_type` to have any casing
 
 ## 3.3.0
 
